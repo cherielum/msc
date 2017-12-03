@@ -28,19 +28,25 @@ extension DemoMessagesViewController {
         
         let request = ApiAI.shared().textRequest()
         request?.query = text
-        
-        request?.setMappedCompletionBlockSuccess({ (request, response) in
-            let response = response as! AIResponse
-            if let message = response.result.fulfillment.speech {
-                let botMessage = BotMessage()
-                botMessage.response = message
+
+        if text != "Yes" {
+            request?.setMappedCompletionBlockSuccess({ (request, response) in
+                let response = response as! AIResponse
+                if let message = response.result.fulfillment.speech {
+                    let botMessage = BotMessage()
+                    botMessage.response = message
+                    completion(botMessage)
+                }
+            }, failure: { (request, error) in
+                
+            })
+            ApiAI.shared().enqueue(request)
+        } else if text == "Yes" {
+            self.single(param: text, completion: { (botMessage) in
                 completion(botMessage)
-            }
-        }, failure: { (request, error) in
-            
-        })
-        ApiAI.shared().enqueue(request)
-        
+            })
+        }
+
 //        single(param: text) { (botMessage) in
 //            completion(botMessage)
 //        }
@@ -61,7 +67,7 @@ extension DemoMessagesViewController {
     
     func single(param:String, completion: @escaping ((BotMessage) -> Void)){
         var json = NSMutableDictionary()
-        toJSONHelper(json, key: "request", value: "hey" as AnyObject?)
+        toJSONHelper(json, key: "request", value: param as AnyObject?)
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         // create post request
