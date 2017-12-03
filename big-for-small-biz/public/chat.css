@@ -69,7 +69,8 @@ body {
 }
 
 .bot .chat-message {
-    background: #6d9da5;
+    background: #F4F3F3;
+    color: Black;
     order: -1;
 }
 
