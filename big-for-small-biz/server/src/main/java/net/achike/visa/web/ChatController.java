@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import net.achike.visa.api.service.VisaApiService;
+import net.achike.visa.client.HttpPayResult;
 import net.achike.visa.entity.Chat;
 import net.achike.visa.service.ChatService;
 
@@ -36,7 +37,15 @@ public class ChatController {
     @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public Chat chat(@RequestBody Chat chat) {
 
-        return chatService.getChat(chat.getRequest());
+        Chat result = chatService.getChat(chat.getRequest());
+        
+        if ( result.getId() == 4 ) {
+            HttpPayResult res = visaApiService.payVisaDirect("achike");
+            
+            result.setResponse(result.getResponse() + " Here's the Approval Code: " + res.getTransaction().getApprovalCode());
+        }
+        
+        return result;
     }
     
 }
