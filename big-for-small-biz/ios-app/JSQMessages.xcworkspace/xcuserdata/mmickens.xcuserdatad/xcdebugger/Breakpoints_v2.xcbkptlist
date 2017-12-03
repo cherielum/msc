@@ -42,12 +42,12 @@
                   moduleName = "JSQMessages"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mmickens/Developer/JSQMessagesViewController/JSQMessagesDemo/WebService.swift"
-                  timestampString = "534017055.762133"
+                  timestampString = "534018110.586022"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "489">
+                  offsetFromSymbolStart = "348">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,12 +57,12 @@
                   moduleName = "JSQMessages"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mmickens/Developer/JSQMessagesViewController/JSQMessagesDemo/WebService.swift"
-                  timestampString = "534017055.763733"
+                  timestampString = "534018110.587246"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
                   endingLineNumber = "104"
-                  offsetFromSymbolStart = "465">
+                  offsetFromSymbolStart = "604">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSQMessagesDemo/DemoMessagesViewController+Swift.swift"
-            timestampString = "534017055.625989"
+            timestampString = "534018110.439422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSQMessagesDemo/DemoMessagesViewController+Swift.swift"
-            timestampString = "534017055.626333"
+            timestampString = "534018110.439489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSQMessagesDemo/DemoMessagesViewController+Swift.swift"
-            timestampString = "534017055.626563"
+            timestampString = "534018110.439537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSQMessagesDemo/DemoMessagesViewController+Swift.swift"
-            timestampString = "534017055.62678"
+            timestampString = "534018110.439581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSQMessagesDemo/DemoMessagesViewController+Swift.swift"
-            timestampString = "534017055.626989"
+            timestampString = "534018110.439624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
