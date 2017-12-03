@@ -35,7 +35,12 @@ public class UserController {
     @PostMapping("/{username}/pay")
     public Boolean payment(@PathVariable String username) {
 
-        return visaApiService.payVisaDirect(username);
+        if(visaApiService.payVisaDirect(username) != null) {
+            return true;
+        }
+        
+        
+        return false;
     }
     
 }

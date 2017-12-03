@@ -138,7 +138,7 @@ public class VisaApiClientImpl implements VisaApiClient {
    }
 
     @Override
-    public CloseableHttpResponse doMutualAuthRequest(String path, String testInfo, String body, MethodTypes methodType,
+    public HttpPayResult doMutualAuthRequest(String path, String testInfo, String body, MethodTypes methodType,
             Map<String, String> headers) throws Exception {
        
         String url = "https://sandbox.api.visa.com" + path;
@@ -163,8 +163,13 @@ public class VisaApiClientImpl implements VisaApiClient {
         
         //HttpHost host = new HttpHost("VisaProperties.getProperty(Property.END_POINT)");
         CloseableHttpResponse response = fetchMutualAuthHttpClient().execute((HttpUriRequest) request);
-        logResponse(response);
-        return response;
+        SuccessfulTransaction st = logResponse(response);
+        
+        HttpPayResult payResult = new HttpPayResult();
+        payResult.setCloseableHttpResponse(response);
+        payResult.setTransaction(st);
+        
+        return payResult;
     }
     
     @Override
@@ -196,10 +201,13 @@ public class VisaApiClientImpl implements VisaApiClient {
         
         CloseableHttpResponse response = fetchXPayHttpClient().execute((HttpUriRequest) request);
         logResponse(response);
+        
+        
+        
         return response;
     }
     
-    private static void logResponse(CloseableHttpResponse response) throws IOException {
+    private static SuccessfulTransaction logResponse(CloseableHttpResponse response) throws IOException {
         Header[] h = response.getAllHeaders();
         
         // Get the response json object
@@ -222,11 +230,13 @@ public class VisaApiClientImpl implements VisaApiClient {
         
         LOGGER.info("\n Response Body:");
         
+        SuccessfulTransaction tree = null;
+        
         if(!StringUtils.isEmpty(result.toString())) {
             ObjectMapper mapper = getObjectMapperInstance();
-            Object tree;
+            
             try {
-                tree = mapper.readValue(result.toString(), Object.class);
+                tree = mapper.readValue(result.toString(), SuccessfulTransaction.class);
                 LOGGER.info("ResponseBody: " + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(tree));
             } catch (JsonProcessingException e) {
                 LOGGER.error(e.getMessage());
@@ -236,6 +246,8 @@ public class VisaApiClientImpl implements VisaApiClient {
         }
         
         EntityUtils.consume(entity);
+        
+        return tree;
     }
     
     private static void logRequestBody(String URI, String testInfo, String payload) {
