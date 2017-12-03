@@ -41,7 +41,7 @@ extension DemoMessagesViewController {
                 
             })
             ApiAI.shared().enqueue(request)
-        } else if text == "Yes" {
+        } else if text == "Yes" && self.lastBotMessage == "Should I pay it?" {
             self.single(param: text, completion: { (botMessage) in
                 completion(botMessage)
             })

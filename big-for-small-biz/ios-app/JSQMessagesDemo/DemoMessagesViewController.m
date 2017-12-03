@@ -360,6 +360,7 @@
                                         text:NSLocalizedString(botMessage.response, nil)];
 
         [self.demoData.messages addObject:newBotMessage];
+        _lastBotMessage = newBotMessage.text;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self finishSendingMessageAnimated:YES];
         });
